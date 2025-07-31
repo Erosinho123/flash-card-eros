@@ -1,0 +1,156 @@
+/* Reset de estilo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container dos Flash Cards */
+.flash-cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 50px;
+    background: linear-gradient(145deg, #1e2a47, #1f3253);
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos dos Flash Cards */
+.flash-card {
+    width: 320px; /* Largura maior */
+    height: 450px; /* Altura maior */
+    perspective: 1000px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Frente do cartão - visual aprimorado e mais tecnológico */
+.flash-card .card-front {
+    background: linear-gradient(45deg, #00FF9C, #00bcd4); /* Gradiente verde-neon a azul cibernético */
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.6rem;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #006400;
+    box-shadow: 0 4px 30px rgba(0, 255, 156, 0.7); /* Brilho mais intenso */
+    transform: rotateY(0deg);
+    z-index: 2;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho sutil na frente */
+.flash-card .card-front::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: shine 2s ease-out infinite;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+@keyframes shine {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+}
+
+/* Efeito de linhas de circuito e bordas metálicas */
+.flash-card .card-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #00FF9C;
+    border-radius: 15px;
+    background: linear-gradient(45deg, transparent 0%, transparent 50%, rgba(0, 255, 156, 0.2) 50%, rgba(0, 255, 156, 0.2) 100%);
+    background-size: 5px 5px;
+    background-position: 0 0;
+    pointer-events: none;
+}
+
+/* Verso do cartão (mantemos o estilo anterior) */
+.flash-card .card-back {
+    background: linear-gradient(45deg, #00bcd4, #9c27b0);
+    color: white;
+    font-size: 1.2rem;
+    padding: 20px;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    border: 2px solid #0F0F0F;
+    box-shadow: 0 4px 20px rgba(156, 39, 176, 0.6);
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Efeito de brilho no verso */
+.flash-card .card-back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    animation: glow 1.5s infinite alternate;
+    z-index: 1;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+    }
+}
+
+/* Efeito de virada ao passar o mouse */
+.flash-card:hover .card-front {
+    transform: rotateY(180deg); /* Rotaciona a frente para mostrar o verso */
+}
+
+.flash-card:hover .card-back {
+    transform: rotateY(0deg); /* Rotaciona o verso para frente */
+}
+
+/* Centralizando o conteúdo */
+body {
+    background: #121212;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+}
